@@ -1,9 +1,9 @@
 name: terraform -apply
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:
   push: 
-   branches: ["main"]
+   branches: ["master"]
 
 env:
   aws-region: us-east-1
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./implementation
+        working-directory: ../implementation
 
     steps:
       - name: checkout
@@ -39,7 +39,8 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init
+          terraform init -backend-con="bucket=$divya-first-bucket" -backend-con="key=$hit.tfstate" -backend-con="dynamodb_table =$Github-table"
+
       - name: terraform validate
         run: 
           terraform validate
