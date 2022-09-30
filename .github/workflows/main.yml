@@ -39,7 +39,7 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init -backend-con="bucket=$divya-first-bucket" -backend-con="key=$hit.tfstate" -backend-con="dynamodb_table =$Github-table"
+          terraform init -reconfigure -backend-con="bucket=$divya-first-bucket" -backend-con="key=$hit.tfstate" -backend-con="dynamodb_table =$Github-table"
 
       - name: terraform validate
         run: 
