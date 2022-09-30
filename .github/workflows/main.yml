@@ -5,7 +5,7 @@ on:
 
 env:
   aws-region: us-east-1
-  my_bucket: my-git-buck
+  my_bucket: my-git-new-buck
   tf_file: hit.tfstate
   dyn_table: Github-table
 
