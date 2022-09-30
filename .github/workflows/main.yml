@@ -10,7 +10,7 @@ env:
   tf_state: githu.tfstate
   dyn_tab: Gith-table
   
-  jobs:
+jobs:
   terraform1:
     name: terraform
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ env:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          
+
       - name: terraform init
         run:
           terraform init backend-config="bucket=$my-s3-bucket" -backend-config="key=$tf_state" -backend-config="dynamodb_table=$dyn_tab"
