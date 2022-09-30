@@ -7,7 +7,7 @@ on:
 
 env:
   aws-region: us-east-1
-  aws-s3-bucket: my-git-buck
+  my-bucket: my-git-buck
   terraform_state: hit.tfstate
   dynamo_table: Github-table
   
@@ -39,7 +39,7 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init -reconfigure -backend-config="bucket=$aws-s3-bucket" -backend-config="key=$terraform_state" -backend-config="dynamodb_table=$dynamo_table"
+          terraform init -reconfigure -backend-config="bucket=$my-bucket" -backend-config="key=$terraform_state" -backend-config="dynamodb_table=$dynamo_table"
 
       - name: terraform validate
         run: 
