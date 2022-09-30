@@ -2,8 +2,8 @@ name: terraform -apply
 
 on:
   workflow_dispatch:
-  push: 
-   branches: ["master"]
+  # push: 
+  #  branches: ["master"]
 
 env:
   aws-region: us-east-1
@@ -39,7 +39,7 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init -reconfigure -backend-con="bucket=$divya-first-bucket" -backend-con="key=$hit.tfstate" -backend-con="dynamodb_table =$Github-table"
+          terraform init -backend-con="bucket=$ aws-s3-bucket" -backend-con="key=$terraform_state" -backend-con="dynamodb_table =$dynamo_table"
 
       - name: terraform validate
         run: 
