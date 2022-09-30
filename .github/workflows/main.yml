@@ -7,9 +7,9 @@ on:
 
 env:
   aws-region: us-east-1
-  # my-bucket: divya-first-bucket
-  # terraform_state: hit.tfstate
-  # dynamo_table: Github-table
+  my-bucket: divya-first-bucket
+  terraform_state: hit.tfstate
+  dynamo_table: Github-table
   
   
 jobs:
