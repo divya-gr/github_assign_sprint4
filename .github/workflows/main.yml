@@ -39,7 +39,7 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init -reconfigure -backend-config="bucket=$aws-s3-bucket" -backend-config="key=$terraform_state" -backend-config="dynamodb_table =$dynamo_table"
+          terraform init -reconfigure -backend-config="bucket=$aws-s3-bucket" -backend-config="key=$terraform_state" -backend-config="dynamodb_table=$dynamo_table"
 
       - name: terraform validate
         run: 
