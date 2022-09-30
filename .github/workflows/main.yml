@@ -8,8 +8,8 @@ on:
 env:
   aws-region: us-east-1
   aws-s3-bucket: divya-first-bucket
-  terraform_state: hit.tfstate
-  dynamo_table: Github-table
+  # terraform_state: hit.tfstate
+  # dynamo_table: Github-table
   
   
 jobs:
@@ -39,7 +39,7 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init -backend-con="bucket=$ aws-s3-bucket" -backend-con="key=$terraform_state" -backend-con="dynamodb_table =$dynamo_table"
+          terraform init 
 
       - name: terraform validate
         run: 
