@@ -1,5 +1,4 @@
 name: terraform -apply
-
 on:
   workflow_dispatch:
   push: 
@@ -11,8 +10,7 @@ env:
   tf_state: githu.tfstate
   dyn_tab: Gith-table
   
-  
-jobs:
+  jobs:
   terraform1:
     name: terraform
     runs-on: ubuntu-latest
