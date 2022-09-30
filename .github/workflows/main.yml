@@ -7,9 +7,9 @@ on:
 
 env:
   aws-region: us-east-1
-  my-bucket: divya-first-bucket
-  terraform_state: hit.tfstate
-  dynamo_table: Github-table
+  my-s3-bucket: my-git-new-buck
+  tf_state: githu.tfstate
+  dyn_tab: Gith-table
   
   
 jobs:
@@ -39,7 +39,7 @@ jobs:
 
       - name: terraform init
         run:
-          terraform init backend-config="bucket=$my-bucket" -backend-config="key=$terraform_state" -backend-config="dynamodb_table=$dynamo_table"
+          terraform init backend-config="bucket=$my-s3-bucket" -backend-config="key=$tf_state" -backend-config="dynamodb_table=$dyn_tab"
 
       - name: terraform validate
         run: 
