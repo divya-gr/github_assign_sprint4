@@ -38,7 +38,8 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
       
       - name: terraform init
-        run: 
+        run: |
+          rm -rf .terraform
           terraform init -backend-config="bucket=$my-bucket" -backend-config="key=$terraform_state" -backend-config="dynamodb_table=$dynamo_table"
 
       - name: terraform validate
