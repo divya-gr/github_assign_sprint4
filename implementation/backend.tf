@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    # bucket = "divya-first-bucket"
+    # bucket = "my-git-buck"
     # key    = "hit.tfstate"
     # region = "us-east-1"
     # dynamodb_table = "Github-table"
