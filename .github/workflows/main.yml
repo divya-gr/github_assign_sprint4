@@ -1,19 +1,19 @@
-name: terraform_full_fledge
+name: GitHub terraform
+
 on:
   workflow_dispatch:
-  push: 
-   branches: ["master"]
 
 env:
   aws-region: us-east-1
-  my-s3-bucket: my-git-new-buck
-  tf_state: githu.tfstate
-  dyn_tab: Gith-table
-  
+  my_bucket: my-git-buck
+  tf_file: hit.tfstate
+  dyn_table: Github-table
+
 jobs:
-  terraform1:
-    name: terraform
+  terraform:
+    name: terraform 
     runs-on: ubuntu-latest
+    
     defaults:
       run:
         working-directory: ./implementation
@@ -25,7 +25,7 @@ jobs:
       - name: Terraform HasiCorp SetUp
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.1.7
+          terraform_version: 1.2.6
 
       - name: AWS Credentials Configuration
         uses: aws-actions/configure-aws-credentials@v1
@@ -34,10 +34,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-
+      
+      - name: terraform format
+        run: 
+          terraform fmt
+      
       - name: terraform init
-        run:
-          terraform init backend-config="bucket=$my-s3-bucket" -backend-config="key=$tf_state" -backend-config="dynamodb_table=$dyn_tab"
+        run: 
+          terraform init -reconfigure -backend-config="bucket=$ my_bucket" -backend-config="key=$tf_file" -backend-config="dynamodb_table=$dyn_table"
 
       - name: terraform validate
         run: 
