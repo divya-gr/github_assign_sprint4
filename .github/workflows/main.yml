@@ -7,9 +7,9 @@ on:
 
 env:
   aws-region: us-east-1
-  my-bucket: divya-first-bucket
-  terraform_state: hit.tfstate
-  dynamo_table: Github-table
+  # my-bucket: divya-first-bucket
+  # terraform_state: hit.tfstate
+  # dynamo_table: Github-table
   
   
 jobs:
@@ -37,13 +37,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
 
-      - name: terraform ref
-        run: 
-          terraform refresh
-
       - name: terraform init
         run:
-          terraform init -backend-config="bucket=$my-bucket" -backend-config="key=$terraform_state" -backend-config="dynamodb_table=$dynamo_table"
+          terraform init 
 
       - name: terraform validate
         run: 
