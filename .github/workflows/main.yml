@@ -25,7 +25,7 @@ jobs:
       - name: Terraform HasiCorp SetUp
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.2.6
+          terraform_version: 1.1.7
 
       - name: AWS Credentials Configuration
         uses: aws-actions/configure-aws-credentials@v1
@@ -41,7 +41,7 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init -reconfigure -backend-config="bucket=$ my_bucket" -backend-config="key=$tf_file" -backend-config="dynamodb_table=$dyn_table"
+          terraform init -reconfigure -backend-config="bucket=$my_bucket" -backend-config="key=$tf_file" -backend-config="dynamodb_table=$dyn_table"
 
       - name: terraform validate
         run: 
