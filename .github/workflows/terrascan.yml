@@ -3,12 +3,6 @@ name: GitHub terraform
 on:
   workflow_dispatch:
 
-env:
-  aws-region: us-east-1
-  my_bucket: my-git-new-buck
-  tf_file: hit.tfstate
-  dyn_table: Github-table
-
 jobs:
   terraform:
     name: terraform 
@@ -16,7 +10,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./implementation
+        working-directory: ./example
 
     steps:
       - name: checkout
@@ -41,8 +35,7 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init -reconfigure -backend-config="bucket=$my_bucket" -backend-config="key=$tf_file" -backend-config="dynamodb_table=$dyn_table"
-
+          terraform init 
       - name: terraform validate
         run: 
           terraform validate
