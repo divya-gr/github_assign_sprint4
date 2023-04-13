@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: Terrascan IaC scanner
+        uses: tenable/terrascan-action@v1.4.1
+
 
       - name: Terraform HasiCorp SetUp
         uses: hashicorp/setup-terraform@v2
