@@ -1,9 +1,9 @@
 name: GitHub terraform
 
 on:
-  # workflow_dispatch:
-  push:
-    branches: [ "master" ]
+  workflow_dispatch:
+  # push:
+  #   branches: [ "master" ]
 env:
   BUCKET: pinkesh-batch-9
   TFSTATE_FILE: hit.tfstate
