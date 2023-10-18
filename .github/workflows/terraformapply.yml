@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
   # push:
   #   branches: [ "master" ]
-# env:
+env:
 #   BUCKET: pinkesh-batch-9
 #   TFSTATE_FILE: hit.tfstate
-#   aws-region: ap-south-1
+  aws-region: ap-south-1
 jobs:
   terraform:
     name: terraform 
