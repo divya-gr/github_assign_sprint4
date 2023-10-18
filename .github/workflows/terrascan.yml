@@ -1,7 +1,17 @@
 name: GitHub terraform
 
 on:
-  workflow_dispatch:
+  # workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  
+     
+ 
+ 
+env:
+  BUCKET: pinkesh-batch-9
+  TFSTATE_FILE: hit.tfstate
+  aws-region: ap-south-1
 
 jobs:
   terraform:
@@ -35,7 +45,7 @@ jobs:
       
       - name: terraform init
         run: 
-          terraform init 
+          terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"
       - name: terraform validate
         run: 
           terraform validate
