@@ -40,8 +40,9 @@ jobs:
       
       - name: terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"
         run: 
-          terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"
-      - name: terraform validate
+          terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"]
+
+      - name: terraform validate command
         run: 
           terraform validate
 
