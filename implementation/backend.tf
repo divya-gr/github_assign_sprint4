@@ -1,8 +1,9 @@
 terraform {
   backend "s3" {
-#     # bucket = "my-git-buck"
-#     # key    = "hit.tfstate"
-#     # region = "us-east-1"
-#     # dynamodb_table = "Github-table"
+    bucket = "pinkesh-batch-9"
+    key    = "hit.tfstate"
+    region = "ap-south-1"
+    dynamodb_table = "divya_batch9_training"
+
   }
 }
