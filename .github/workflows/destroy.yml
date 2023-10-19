@@ -1,14 +1,11 @@
-name: GitHub destroy
+name: GitHub terraform destroy
 
 on:
   workflow_dispatch:
-
+  # push:
+  #   branches: [ "master" ]
 env:
-  aws-region: us-east-1
-  my_bucket: my-git-new-buck
-  tf_file: hit.tfstate
-  dyn_table: Github-table
-
+  aws-region: ap-south-1
 jobs:
   terraform:
     name: terraform 
@@ -33,15 +30,22 @@ jobs:
           aws-region: ${{ env.aws-region }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
       
       - name: terraform format
         run: 
           terraform fmt
-      
-      - name: terraform init
+      - name: terraform init -reconfigure
         run: 
-          terraform init -reconfigure -backend-config="bucket=$my_bucket" -backend-config="key=$tf_file" -backend-config="dynamodb_table=$dyn_table"
+         terraform init
+
+      - name: terraform validate command
+        run: 
+          terraform validate
+
+      - name: terraform plan
+        run: 
+          terraform plan
 
       - name: terraform destroy
         run: 
