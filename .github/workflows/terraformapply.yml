@@ -5,8 +5,8 @@ on:
   # push:
   #   branches: [ "master" ]
 env:
-#   BUCKET: pinkesh-batch-9
-#   TFSTATE_FILE: hit.tfstate
+  BUCKET: pinkesh-batch-9
+  TFSTATE_FILE: hit.tfstate
   aws-region: ap-south-1
 jobs:
   terraform:
@@ -39,7 +39,7 @@ jobs:
           terraform fmt
       - name: terraform init
         run: 
-          terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"]
+          terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"
         # run: 
         #  terraform init
 
