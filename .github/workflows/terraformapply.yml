@@ -5,7 +5,7 @@ on:
   # push:
   #   branches: [ "master" ]
 env:
-  BUCKET: pinkesh-batch-9
+  BUCKET: eks-poc-task-1
   TFSTATE_FILE: hit.tfstate
   aws-region: ap-south-1
 jobs:
