@@ -5,8 +5,6 @@ on:
   # push:
   #   branches: [ "master" ]
 env:
-  # BUCKET: eks-poc-task-1
-  # TFSTATE_FILE: hit.tfstate
   aws-region: ap-south-1
 jobs:
   terraform:
@@ -38,8 +36,6 @@ jobs:
         run: 
           terraform fmt
       - name: terraform init
-        # run: 
-        #   terraform -chdir=./implementation init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"
         run: 
          terraform init
 
