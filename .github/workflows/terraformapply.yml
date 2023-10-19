@@ -39,7 +39,7 @@ jobs:
           terraform fmt
       - name: terraform init
         run: 
-          terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"
+          terraform -chdir=./implementation init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"
         # run: 
         #  terraform init
 
