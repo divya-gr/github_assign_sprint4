@@ -1,12 +1,10 @@
-name: GitHub terraform
+name: GitHub terraform Apply
 
 on:
-  # workflow_dispatch:
-  push:
-    branches: [ "master" ]
+  workflow_dispatch:
+  # push:
+  #   branches: [ "master" ]
 env:
-  BUCKET: pinkesh-batch-9
-  TFSTATE_FILE: hit.tfstate
   aws-region: ap-south-1
 jobs:
   terraform:
@@ -15,7 +13,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./example
+        working-directory: ./implementation
 
     steps:
       - name: checkout
@@ -32,15 +30,14 @@ jobs:
           aws-region: ${{ env.aws-region }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
       
       - name: terraform format
         run: 
           terraform fmt
-      
-      - name: terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"
+      - name: terraform init -reconfigure
         run: 
-          terraform init backend-config="bucket=${{env.BUCKET}}" -backend-config="key=${{env.TFSTATE_FILE}}"]
+         terraform init
 
       - name: terraform validate command
         run: 
